@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+//Pages
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+
+//styled-component
+import { DashboardBody, StyledContainer } from "./components/Styles";
+
+//LoginSpinner
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <StyledContainer>
+            <Login />
+          </StyledContainer>
+        </Route>
+
+        <Route path="/dashboard">
+          <DashboardBody>
+            <Dashboard />
+          </DashboardBody>
+        </Route>
+
+        <Route path="/">
+          <StyledContainer>
+            <Home />
+          </StyledContainer>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
